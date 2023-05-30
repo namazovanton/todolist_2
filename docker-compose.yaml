@@ -6,13 +6,18 @@ services:
     image: postgres:15.1-alpine
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     volumes:
       - todolist_2_data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+    healthcheck:
+      test: pg_isready -U ${DB_USER} -d ${DB_NAME}
+      timeout: 3s
+      interval: 4s
+      retries: 10
 
 
 volumes:
