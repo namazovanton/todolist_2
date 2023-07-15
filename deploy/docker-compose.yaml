@@ -3,7 +3,7 @@ version: '3.9'
 services:
 
   db:
-    image: postgres:15.1-alpine
+    image: postgres:15.1
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
@@ -13,40 +13,28 @@ services:
       timeout: 5s
       interval: 3s
       retries: 10
-    ports:
-      - '5432:5432'
     volumes:
       - todolist_2_pg_data:/var/lib/postgresql/data/
 
   run_migrations:
-    build: .
+    image: ${DOCKERHUB_USER}/todolist_2:latest
     env_file: .env
-    environment:
-      POSTGRES_HOST: db
     depends_on:
       db:
         condition: service_healthy
     command: python manage.py migrate
 
   api:
-    build: .
+    image: ${DOCKERHUB_USER}/todolist_2:latest
     env_file: .env
-    environment:
-      POSTGRES_HOST: db
-      DEBUG: false
     depends_on:
       db:
         condition: service_healthy
       run_migrations:
         condition: service_completed_successfully
-    ports:
-      - '8000:8000'
-    volumes:
-      - ./core:/opt/app/core/
-      - ./todolist_2:/opt/app/todolist_2/
 
   collect_static:
-    build: .
+    image: ${DOCKERHUB_USER}/todolist_2:latest
     env_file: .env
     command: python manage.py collectstatic -c --no-input
     volumes:
