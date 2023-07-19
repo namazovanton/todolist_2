@@ -46,8 +46,8 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd todolist_2
-            docker-compose down
             docker-compose pull
+            docker-compose down
             docker-compose up -d
       - name: CleanUp
         uses: appleboy/ssh-action@master
