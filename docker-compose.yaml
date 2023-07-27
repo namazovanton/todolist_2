@@ -33,7 +33,6 @@ services:
     env_file: .env
     environment:
       POSTGRES_HOST: db
-      DEBUG: false
     depends_on:
       db:
         condition: service_healthy
@@ -43,6 +42,7 @@ services:
       - '8000:8000'
     volumes:
       - ./core:/opt/app/core/
+      - ./goals:/opt/app/goals/
       - ./todolist_2:/opt/app/todolist_2/
 
   collect_static:
@@ -53,8 +53,7 @@ services:
       - django_static:/opt/app/static/
 
   frontend:
-    image: sermalenk/skypro-front:lesson-34
-    restart: on-failure
+    image: sermalenk/skypro-front:lesson-36
     ports:
       - '80:80'
     depends_on:
