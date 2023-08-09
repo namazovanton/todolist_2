@@ -1,0 +1,26 @@
+{
+    "ok": true,
+    "result": [
+        {
+            "update_id": 282305921,
+            "message": {
+                "message_id": 2,
+                "from": {
+                    "id": 220824307,
+                    "is_bot": false,
+                    "first_name": "AntonNNN",
+                    "username": "anton_nnn",
+                    "language_code": "ru"
+                },
+                "chat": {
+                    "id": 220824307,
+                    "first_name": "AntonNNN",
+                    "username": "anton_nnn",
+                    "type": "private"
+                },
+                "date": 1691341642,
+                "text": "Hello"
+            }
+        }
+    ]
+}

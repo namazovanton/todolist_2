@@ -1,0 +1,20 @@
+{
+    "ok": true,
+    "result": {
+        "message_id": 3,
+        "from": {
+            "id": 6640015527,
+            "is_bot": true,
+            "first_name": "Todolist_2",
+            "username": "Todolisttt_2_bot"
+        },
+        "chat": {
+            "id": 220824307,
+            "first_name": "AntonNNN",
+            "username": "anton_nnn",
+            "type": "private"
+        },
+        "date": 1691347519,
+        "text": "Hello"
+    }
+}
