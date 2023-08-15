@@ -65,7 +65,7 @@ services:
       - django_static:/opt/app/static/
 
   frontend:
-    image: sermalenk/skypro-front:lesson-38
+    image: sermalenk/skypro-front:lesson-37
     ports:
       - '80:80'
     depends_on:
