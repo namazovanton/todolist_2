@@ -14,6 +14,7 @@ class CategoryListView(generics.ListAPIView):
     serializer_class = GoalCategoryWithUserSerializer
     permission_classes = [permissions.IsAuthenticated]
     filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    # filterset_field = ['board']
     ordering_fields = ['title', 'created']
     ordering = ['title']
     search_field = ['title']

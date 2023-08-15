@@ -33,6 +33,16 @@ services:
       run_migrations:
         condition: service_completed_successfully
 
+  bot:
+    image: ${DOCKERHUB_USER}/todolist_2:latest
+    env_file: .env
+    depends_on:
+      db:
+        condition: service_healthy
+      run_migrations:
+        condition: service_completed_successfully
+    command: python manage.py run_bot
+
   collect_static:
     image: ${DOCKERHUB_USER}/todolist_2:latest
     env_file: .env
@@ -41,7 +51,7 @@ services:
       - django_static:/opt/app/static/
 
   frontend:
-    image: sermalenk/skypro-front:lesson-37
+    image: sermalenk/skypro-front:lesson-38
     restart: on-failure
     ports:
       - '80:80'

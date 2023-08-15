@@ -3,7 +3,9 @@ from typing import Callable, Any
 from todolist_2.models import BaseModel
 
 
-
+class FSM(BaseModel):
+    next_handler: Callable
+    data: dict[str, Any] = {}
 
 
 users: dict[int, FSM] = {}
@@ -26,7 +28,7 @@ def handler_create_goal_command(chat_id, msg):
 
 
 def send_handler(chat_id, msg):
-    cat = CATEGORIES[int(msg)]
+    cat = CATEGORIES[int(msg)-1]
     users[chat_id].data.update({'category': cat})
 
     print(f'Select category {cat}')
