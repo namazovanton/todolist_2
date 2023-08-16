@@ -38,8 +38,8 @@ services:
         condition: service_healthy
       run_migrations:
         condition: service_completed_successfully
-    ports:
-      - '8000:8000'
+#    ports:
+#      - '8000:8000'
     volumes:
       - ./core:/opt/app/core/
       - ./goals:/opt/app/goals/
