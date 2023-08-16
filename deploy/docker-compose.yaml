@@ -12,8 +12,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
-      run_migrations:
-        condition: service_completed_successfully
+#      run_migrations:
+#        condition: service_completed_successfully
     volumes:
       - /var/lib/todolist_2/bot
     command:
