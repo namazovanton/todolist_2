@@ -44,7 +44,7 @@ services:
       run_migrations:
         condition: service_completed_successfully
     volumes:
-      - /var/lib/todolist/bot
+      - /var/lib/todolist_2/bot
     command: python manage.py run_bot
 
   collect_static:
