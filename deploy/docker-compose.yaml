@@ -6,20 +6,17 @@ services:
   bot:
     image: ${DOCKERHUB_USER}/todolist_2:latest
     env_file: .env
-    environment:
-      DB_HOST: db
+#    environment:
+#      POSTGRES_HOST: db
 #    dns: 8.8.8.8
     depends_on:
       db:
         condition: service_healthy
       run_migrations:
         condition: service_completed_successfully
-    volumes:
-      - ./bot:/opt/app/bot/
-    command:
-      - python3
-      - manage.py
-      - run_bot
+#    volumes:
+#      - ./bot:/opt/app/bot/
+    command: python manage.py run_bot
 
 
   frontend:
