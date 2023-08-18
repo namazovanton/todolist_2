@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 
 services:
 
@@ -12,12 +12,12 @@ services:
     depends_on:
       db:
         condition: service_healthy
-#      run_migrations:
-#        condition: service_completed_successfully
+      run_migrations:
+        condition: service_completed_successfully
     volumes:
-      - /var/lib/todolist_2/bot
+      - ./bot:/opt/app/bot/
     command:
-      - python
+      - python3
       - manage.py
       - run_bot
 
