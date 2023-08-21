@@ -23,7 +23,7 @@ class TgUserVerification(generics.UpdateAPIView):
             raise bad_request
 
         tg_user.user = request.user
-        tg_user.save()
-        TgClient.send_message(chat_id=tg_user.chat_id, text='Bot verification completed successfully')
+        tg_user.save(update_fields=['user'])
+        TgClient().send_message(chat_id=tg_user.chat_id, text='Bot verification completed successfully')
 
         return Response(TgUserSerializer(tg_user).data)

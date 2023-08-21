@@ -6,9 +6,9 @@ services:
   bot:
     image: ${DOCKERHUB_USER}/todolist_2:latest
     env_file: .env
-#    environment:
-#      POSTGRES_HOST: db
-#    dns: 8.8.8.8
+    environment:
+      POSTGRES_HOST: db
+    dns: 8.8.8.8
     depends_on:
       db:
         condition: service_healthy
