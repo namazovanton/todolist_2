@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 
 from core.models import User
 from todolist_2.models import BaseModel
@@ -27,6 +26,7 @@ class BoardParticipant(BaseModel):
     editable_roles = Role.choices[1:]
 
     class Meta:
+        """Внутри базы данных у одной доски не будет несколько записей с одним и тем же пользователем."""
         unique_together = ('board', 'user')
 
 
@@ -60,7 +60,8 @@ class Goal(BaseModel):
     due_date = models.DateField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     status = models.PositiveSmallIntegerField(verbose_name="Статус", choices=Status.choices, default=Status.to_do)
-    priority = models.PositiveSmallIntegerField(verbose_name="Приоритет", choices=Priority.choices, default=Priority.medium)
+    priority = models.PositiveSmallIntegerField(verbose_name="Приоритет",
+                                                choices=Priority.choices, default=Priority.medium)
 
     class Meta:
         verbose_name = "Цель"
@@ -75,6 +76,3 @@ class GoalComment(BaseModel):
     class Meta:
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
-
-
-
